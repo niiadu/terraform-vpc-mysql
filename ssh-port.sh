@@ -1,16 +1,17 @@
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
 
-# sudo systemctl status ssh
 # ss -tlpn| grep ssh
 sudo -i
 # systemctl edit ssh.socket
 # vim /etc/systemd/system/ssh.socket.d/override.conf
+mkdir -p /etc/systemd/system/ssh.socket.d
 
 cat > /etc/systemd/system/ssh.socket.d/override.conf <<EOF
- [Socket]
+[Socket]
 ListenStream=
 ListenStream=2031
 EOF
 
-systemctl restart ssh.socket
+sudo systemctl daemon-reload
+sudo systemctl restart ssh.socket

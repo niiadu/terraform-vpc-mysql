@@ -23,7 +23,7 @@ resource "aws_db_subnet_group" "database-subnet" {
 
 # AWS secrets manager configuration
 resource "aws_secretsmanager_secret" "db_credentials" {
-  name = "mysql_db_credentials"
+  name = "${var.account_name}_db_credentials"
 }
 
 # Aws secret manager credential, passed to the secret manager directory
@@ -87,6 +87,13 @@ resource "aws_security_group" "my_security_group" {
     ingress {
     from_port   = 443
     to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+     ingress {
+    from_port   = 1433
+    to_port     = 1433
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

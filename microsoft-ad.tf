@@ -1,7 +1,7 @@
 resource "aws_directory_service_directory" "my-directory" {
   name     = "corp.mydirectory.com"
 #   password = "SuperSecretPassw0rd"
-  password = "niiadu1234"
+  password = "niiadu1234@#?"
   edition  = "Standard"
   type     = "MicrosoftAD"
 

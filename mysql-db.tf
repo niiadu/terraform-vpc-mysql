@@ -44,22 +44,30 @@ locals {
 
 #Database configuration instance
 resource "aws_db_instance" "database-instance" {
-  allocated_storage      = 10
-  db_name                = "mysqldb"
-  engine                 = "mysql"
-  engine_version         = "8.0"
+  allocated_storage      = 20
+#   db_name                = ""
+  identifier = "mysqlserver"
+  engine                 = "sqlserver-ex"
+  engine_version         = "15.00.4043.16.v1"
   instance_class         = "db.t3.micro"
   username               = local.db_credentials.username
   password               = local.db_credentials.password
-  parameter_group_name   = "default.mysql8.0"
+#   parameter_group_name   = "default.mysql8.0"
   skip_final_snapshot    = true
   availability_zone      = var.azs[0]
   db_subnet_group_name   = aws_db_subnet_group.database-subnet.name
+  license_model = "license-included"
   # multi_az               = true
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
   domain = aws_directory_service_directory.my-directory.id
   domain_iam_role_name = aws_iam_role.role.name
 }
+
+# resource "aws_db_instance_role_association" "the-role" {
+#   db_instance_identifier = aws_db_instance.database-instance.identifier
+#   feature_name           = "IAMAuthentication"
+#   role_arn               = aws_iam_role.role.arn
+# }
 
 
 # Security Group for the database in the private DB subnet, to allow access from the EC2 instances in the private subnet

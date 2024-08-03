@@ -353,3 +353,11 @@ variable "db-username" {
   type        = string
   default = "admin"
 }
+
+variable "key-pair" {
+  default = "linux_machine"
+}
+
+variable "instance_type" {
+  default = "t3.micro"
+}

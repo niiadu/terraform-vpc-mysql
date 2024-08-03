@@ -21,3 +21,13 @@ cd ~/custom_folder/
 aws acm import-certificate --certificate fileb://server.crt --private-key fileb://server.key --certificate-chain fileb://ca.crt
 
 aws acm import-certificate --certificate fileb://client1.domain.tld.crt --private-key fileb://client1.domain.tld.key --certificate-chain fileb://ca.crt
+
+cvpn-endpoint-010bc6b283f869d91
+aws ec2 export-client-vpn-client-configuration \
+--client-vpn-endpoint-id "cvpn-endpoint-010bc6b283f869d91" \
+--output text > myclientconfig.ovpn
+
+/Users/nii/easy-rsa/easyrsa3/pki/issued/client1.domain.tld.crt
+/Users/nii/easy-rsa/easyrsa3/pki/private/client1.domain.tld.key
+
+openssl crl -in /Users/nii/easy-rsa/easyrsa3/pki/issued/client1.domain.tld.crt -noout -nextupdate

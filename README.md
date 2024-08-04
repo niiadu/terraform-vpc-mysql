@@ -53,6 +53,7 @@ aws acm import-certificate --certificate fileb://client1.domain.tld.crt --privat
 
 ## Step 2: Define Terraform Configuration
 We'll use Terraform to define our AWS infrastructure, including EC2 instances, RDS database, IAM roles, and VPN endpoints.
+
 ### AWS Secret Manager
 ```
 # AWS Secrets Manager configuration
@@ -161,7 +162,8 @@ resource "aws_db_instance" "database-instance" {
 <img width="1189" alt="Screenshot 2024-08-03 at 5 09 05 PM" src="https://github.com/user-attachments/assets/29212e4d-a06d-490f-a2ad-c9f4252de7e7">
 
 <img width="1188" alt="Screenshot 2024-08-03 at 5 08 49 PM" src="https://github.com/user-attachments/assets/f7d3274e-f761-43de-9ab4-ed567ec1be65">
-###  Microsoft Active Directory
+
+### Microsoft Active Directory
 
 ```
 # Create a Microsoft Active Directory
@@ -182,6 +184,7 @@ resource "aws_directory_service_directory" "my-directory" {
 }
 ```
 <img width="1192" alt="Screenshot 2024-08-03 at 8 19 43 PM" src="https://github.com/user-attachments/assets/7f548b4d-db01-488b-b287-5ddd56f40eaf">
+
 ### Creating a VPN endpoint and authorizing it to be accessed by users
 
 ```
@@ -229,6 +232,7 @@ resource "aws_ec2_client_vpn_network_association" "vpn-association-2" {
  <img width="1230" alt="Screenshot 2024-08-03 at 8 07 02 PM" src="https://github.com/user-attachments/assets/3e3b5a64-e333-47d3-adc5-a6794bdc1d06">
 
 ### This shows the AWS VPN Client being connected from my local machine.
+
 <img width="322" alt="Screenshot 2024-08-03 at 4 41 36 PM" src="https://github.com/user-attachments/assets/be77f1d5-ab25-42a4-b981-8b7610b3ed2a">
 
 <img width="473" alt="Screenshot 2024-08-03 at 4 48 14 PM" src="https://github.com/user-attachments/assets/0bb6ca84-413b-42a4-8799-44c7ca45cca5">

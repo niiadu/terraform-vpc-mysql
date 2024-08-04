@@ -29,5 +29,3 @@ aws ec2 export-client-vpn-client-configuration \
 
 cert /Users/nii/custom_folder/client1.domain.tld.crt
 key /Users/nii/custom_folder/client1.domain.tld.key
-
-openssl crl -in /Users/nii/easy-rsa/easyrsa3/pki/issued/client1.domain.tld.crt -noout -nextupdate

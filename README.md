@@ -6,7 +6,9 @@ I'll walk you through the steps of creating a secure infrastructure using Terraf
 Before we begin, make sure you have the following tools installed:
 
 `Terraform`: Infrastructure as Code (IaC) tool to manage and provision your infrastructure.
+
 `AWS CLI`: Command-line interface to interact with AWS services.
+
 `Easy-RSA`: Utility for creating and managing a Public Key Infrastructure (PKI).
 
 ## Step 1: Generate SSL Certificates with Easy-RSA

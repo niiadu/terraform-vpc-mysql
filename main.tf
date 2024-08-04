@@ -1,13 +1,13 @@
 locals {
-  len_public_subnets      = max(length(var.public_subnets))
-  len_private_subnets     = max(length(var.private_subnets))
+  len_public_subnets  = max(length(var.public_subnets))
+  len_private_subnets = max(length(var.private_subnets))
 
 
   max_subnet_length = max(
     local.len_private_subnets,
     local.len_public_subnets,
   )
-  
+
   vpc_id = try(aws_vpc.this[0].id, "")
 
   create_vpc = var.create_vpc
@@ -20,7 +20,7 @@ locals {
 resource "aws_vpc" "this" {
   count = local.create_vpc ? 1 : 0
 
-  cidr_block          = var.cidr
+  cidr_block = var.cidr
 
   instance_tenancy                     = var.instance_tenancy
   enable_dns_hostnames                 = var.enable_dns_hostnames
@@ -29,11 +29,11 @@ resource "aws_vpc" "this" {
   tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.short_region}-vpc")
+        format("${var.account_name}-${var.short_region}-vpc")
       )
     },
     var.tags,
-   )
+  )
 
 }
 
@@ -65,11 +65,11 @@ resource "aws_subnet" "public" {
       )
     },
     var.tags,
-   )
+  )
 }
 
 resource "aws_route_table" "public" {
-  count = var.create_vpc && max(length(var.public_subnets)) > 0 ? 1 : 0
+  count  = var.create_vpc && max(length(var.public_subnets)) > 0 ? 1 : 0
   vpc_id = local.vpc_id
 
   tags = merge(
@@ -79,9 +79,9 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public" {
- # count = length(var.public_subnets)
-   count = local.create_public_subnets ? local.len_public_subnets : 0
- # count = length(aws_subnet.public) > 0 ? length(aws_subnet.public) : 0
+  # count = length(var.public_subnets)
+  count = local.create_public_subnets ? local.len_public_subnets : 0
+  # count = length(aws_subnet.public) > 0 ? length(aws_subnet.public) : 0
   subnet_id      = element(aws_subnet.public[*].id, count.index)
   route_table_id = aws_route_table.public[0].id
 }
@@ -118,11 +118,11 @@ resource "aws_internet_gateway" "this" {
   tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.short_region}-igw")
+        format("${var.account_name}-${var.short_region}-igw")
       )
     },
     var.tags,
-   )
+  )
 }
 
 ################################################################################
@@ -205,7 +205,7 @@ resource "aws_eip" "nat" {
       )
     },
     var.tags,
-    )
+  )
 
   depends_on = [aws_internet_gateway.this]
 }

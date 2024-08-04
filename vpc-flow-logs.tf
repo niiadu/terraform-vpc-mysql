@@ -36,14 +36,14 @@ resource "aws_flow_log" "this" {
     }
   }
 
-    tags = merge(
+  tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.short_region}-flow_log")
+        format("${var.account_name}-${var.short_region}-flow_log")
       )
     },
     var.tags,
-   )
+  )
 }
 
 ################################################################################
@@ -58,14 +58,14 @@ resource "aws_cloudwatch_log_group" "flow_log" {
   kms_key_id        = var.flow_log_cloudwatch_log_group_kms_key_id
   skip_destroy      = var.flow_log_cloudwatch_log_group_skip_destroy
 
-      tags = merge(
+  tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.short_region}-log_group")
+        format("${var.account_name}-${var.short_region}-log_group")
       )
     },
     var.tags,
-   )
+  )
 }
 
 resource "aws_iam_role" "vpc_flow_log_cloudwatch" {
@@ -75,14 +75,14 @@ resource "aws_iam_role" "vpc_flow_log_cloudwatch" {
   assume_role_policy   = data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0].json
   permissions_boundary = var.vpc_flow_log_permissions_boundary
 
-       tags = merge(
+  tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.short_region}-aws_iam_role")
+        format("${var.account_name}-${var.short_region}-aws_iam_role")
       )
     },
     var.tags,
-   )
+  )
 }
 
 data "aws_iam_policy_document" "flow_log_cloudwatch_assume_role" {
@@ -117,11 +117,11 @@ resource "aws_iam_policy" "vpc_flow_log_cloudwatch" {
   tags = merge(
     {
       Name = try(
-      format("${var.account_name}-${var.region}-aws_iam_policy")
+        format("${var.account_name}-${var.region}-aws_iam_policy")
       )
     },
     var.tags,
-   )
+  )
 }
 
 data "aws_iam_policy_document" "vpc_flow_log_cloudwatch" {

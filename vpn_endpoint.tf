@@ -2,8 +2,8 @@ resource "aws_ec2_client_vpn_endpoint" "my-vpn-endpoint" {
   description            = "terraform-clientvpn-example"
   server_certificate_arn = "arn:aws:acm:eu-north-1:736024348173:certificate/5c166788-55ca-4b08-a812-a086cfcf273f"
   client_cidr_block      = "192.168.128.0/22"
-  vpc_id = aws_vpc.this[0].id
-  security_group_ids = [aws_security_group.my_security_group.id]
+  vpc_id                 = aws_vpc.this[0].id
+  security_group_ids     = [aws_security_group.my_security_group.id]
 
   authentication_options {
     type                       = "certificate-authentication"
@@ -11,7 +11,7 @@ resource "aws_ec2_client_vpn_endpoint" "my-vpn-endpoint" {
   }
 
   connection_log_options {
-    enabled               = false
+    enabled = false
   }
 }
 

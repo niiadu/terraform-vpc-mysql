@@ -1,13 +1,13 @@
 variable "region" {
   description = "AWS region"
   type        = string
-  default = "eu-north-1"
+  default     = "eu-north-1"
 }
 
 variable "short_region" {
   description = "Shortened name of the AWS region"
   type        = string
-  default = "eu-n1"
+  default     = "eu-n1"
 }
 
 variable "create_vpc" {
@@ -25,7 +25,7 @@ variable "account_name" {
 variable "cidr" {
   description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
   type        = string
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "tags" {
@@ -75,13 +75,13 @@ variable "enable_dns_support" {
 variable "private_subnets" {
   description = "A list of private subnets inside the VPC"
   type        = list(string)
-  default     = [ "10.0.3.0/24", "10.0.4.0/24" ]
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
 }
 
 variable "public_subnets" {
   description = "A list of public subnets inside the VPC"
   type        = list(string)
-  default = [ "10.0.1.0/24", "10.0.2.0/24" ]
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "one_nat_gateway_per_az" {
@@ -159,7 +159,7 @@ variable "create_igw" {
 variable "public_subnet_names" {
   description = "Explicit values to use in the Name tag on public subnets. If empty, Name tags are generated"
   type        = list(string)
-  default     = [ "Pub-sn-1", "Pub-sn-2" ]
+  default     = ["Pub-sn-1", "Pub-sn-2"]
 }
 
 variable "private_subnet_names" {
@@ -351,7 +351,7 @@ variable "flow_log_cloudwatch_log_group_skip_destroy" {
 variable "db-username" {
   description = "The username for the database"
   type        = string
-  default = "admin"
+  default     = "admin"
 }
 
 variable "key-pair" {

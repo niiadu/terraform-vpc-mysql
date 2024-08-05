@@ -1,3 +1,4 @@
+# Mircrosoft active directory with an IAM role associated to access the DB
 resource "aws_directory_service_directory" "my-directory" {
   name = "corp.mydirectory.com"
   #   password = "SuperSecretPassw0rd"
@@ -15,7 +16,7 @@ resource "aws_directory_service_directory" "my-directory" {
   }
 }
 
-
+# i am role for the MS AD
 resource "aws_iam_role" "role" {
   name = "rds-directory-service-access-role"
 
@@ -40,6 +41,7 @@ resource "aws_iam_role" "role" {
   }
 }
 
+# IAM policy for the role
 resource "aws_iam_role_policy_attachment" "test-attach" {
   role       = aws_iam_role.role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonRDSDirectoryServiceAccess"

@@ -1,3 +1,4 @@
+# ec2 instance in private subnet
 resource "aws_instance" "Private-Server" {
   ami             = data.aws_ami.ubuntu.id // Ubuntu  AMI
   instance_type   = var.instance_type

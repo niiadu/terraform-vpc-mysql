@@ -5,13 +5,14 @@ data "aws_secretsmanager_secret_version" "current" {
   depends_on = [aws_secretsmanager_secret_version.db_secret_version]
 }
 
-# Databse Subnet, in the private subnet we created for the private subent
+# Creating a random password for the database
 resource "random_password" "db-password" {
   length           = 16
   special          = true
   override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
+# Databse Subnet, in the private subnet we created for the private subent
 resource "aws_db_subnet_group" "database-subnet" {
   name       = "database-subnets"
   subnet_ids = [aws_subnet.private[0].id, aws_subnet.private[1].id]
@@ -70,7 +71,7 @@ resource "aws_db_instance" "database-instance" {
 # }
 
 
-# Security Group for the database in the private DB subnet, to allow access from the EC2 instances in the private subnet
+# Security Group for the database and ec2 in the private DB subnet, to allow access from the client VPN Endpoint
 resource "aws_security_group" "my_security_group" {
   name        = "Server Security Group"
   description = "My security group"

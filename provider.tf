@@ -12,6 +12,7 @@ provider "aws" {
   region = var.region
 }
 
+# Send the statefile to s3 bucket
 terraform {
   backend "s3" {
     bucket = "niiadu12"

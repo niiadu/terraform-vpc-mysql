@@ -355,9 +355,13 @@ variable "db-username" {
 }
 
 variable "key-pair" {
+  description = "Key pair for ec2 instance"
+  type = string
   default = "linux_machine"
 }
 
 variable "instance_type" {
+  description = "The type of instance to create"
+  type        = string
   default = "t3.micro"
 }

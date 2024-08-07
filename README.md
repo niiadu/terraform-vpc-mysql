@@ -261,7 +261,7 @@ sudo systemctl restart ssh.socket
 <img width="868" alt="Screenshot 2024-08-03 at 5 02 39 PM" src="https://github.com/user-attachments/assets/4543a709-5804-430e-b757-0bc02dc87a08">
 
 ## Conclusion
-In this blog post, we successfully set up a secure infrastructure using Terraform, AWS, and Easy-RSA. We generated SSL certificates, created an RDS database,Microsoft Active Directory configured an EC2 instance and changed the default port to 2031, and set up a VPN endpoint for secure access. This setup ensures that our infrastructure is both secure and easily manageable.
+In this post, we successfully set up a secure infrastructure using Terraform, AWS, and Easy-RSA. We generated SSL certificates, created an RDS database,Microsoft Active Directory configured an EC2 instance and changed the default port to 2031, and set up a VPN endpoint for secure access. This setup ensures that our infrastructure is both secure and easily manageable.
 
 ## Usage
 - Execute the command `terraform init` to setup the project workspace.

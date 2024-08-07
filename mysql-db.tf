@@ -24,7 +24,7 @@ resource "aws_db_subnet_group" "database-subnet" {
 
 # AWS secrets manager configuration
 resource "aws_secretsmanager_secret" "db_credentials" {
-  name = "${var.account_name}_db_credentials"
+  name = "${var.account_name}_sql_db_credentials"
 }
 
 # Aws secret manager credential, passed to the secret manager directory
